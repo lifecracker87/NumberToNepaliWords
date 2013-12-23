@@ -87,6 +87,7 @@ public class NumberToWord {
         return this._convertToStr(this.number);
     }
 
+    //Implementation:, To use this class for real application, remove the main method below
     public static void main(String[] arg) {
         NumberToWord n = new NumberToWord("0010023456");
         System.out.println(n.getInWords());
