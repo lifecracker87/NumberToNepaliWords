@@ -7,7 +7,7 @@
  *
  * @author bhim || lifecracker87
  */
-class NumberToWord 
+class NumberToWord
 {
 
     private $number;
@@ -21,9 +21,55 @@ class NumberToWord
         "सत्तरी", "एकहत्तर", "बहत्तर", "त्रिहत्तर", "चौरहत्तर", "पचहत्तर", "छयत्तर", "सतहत्तर", "अठहत्तर", "उनासी",
         "असी", "एकासी", "बयासी", "त्रियासी", "चौरासी", "पचासी", "छयासी", "सतासी", "अठासी", "उनान्नब्बे",
         "नब्बे", "एकान्नब्बे", "बयान्नब्बे", "त्रियान्नब्बे", "चौरान्नब्बे", "पन्चान्नब्बे", "छ्यान्नब्बे", "सन्तान्नब्बे", "अन्ठान्नब्बे", "उनान्सय" );
-
+    
     public function __construct($number) {
-        $this->number = $number;
+        if(is_numeric($number))
+            $this->number = $number;
+        else
+        {
+            $this->number=$this->NepToEng($number);
+        }
+    }
+    private function NepToEng($n) {
+        $eng='';
+        $sn=str_split($n,3);// 3 for unicode length......
+        foreach ($sn as $one) {
+            switch ($one) {
+                case "१":
+                    $eng.="1";
+                    break;
+                case "२":
+                    $eng.="2";
+                    break;
+                case "३":
+                    $eng.="3";
+                    break;
+                case "४":
+                    $eng.="4";
+                    break;
+                case "५":
+                    $eng.="5";
+                    break;
+                case "६":
+                    $eng.="6";
+                    break;
+                case "७":
+                    $eng.="7";
+                    break;
+                case "८":
+                    $eng.="8";
+                    break;
+                case "९":
+                    $eng.="9";
+                    break;
+                case "०":
+                    $eng.="0";
+                    break;
+                default :
+                    $eng.=$n;
+            }
+        }
+        return $eng;
     }
 
     private function _convertToStr($num) {
