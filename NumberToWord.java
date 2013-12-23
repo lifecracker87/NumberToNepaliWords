@@ -22,7 +22,53 @@ public class NumberToWord {
     };
 
     public NumberToWord(String num) {
-        this.number = Long.parseLong(num);
+        try {
+            this.number = Long.parseLong(num);
+        } catch (Exception E) {
+            this.number = Long.parseLong(this.NepToEng(num));
+        }
+    }
+    
+    private String NepToEng(String n) {
+        String eng="";
+        String[] sn=n.split("");
+        for (String sn1 : sn) {
+            switch (sn1) {
+                case "१":
+                    eng+="1";
+                    break;
+            case "२":
+                eng+="2";
+                break;
+            case "३":
+                eng+="3";
+                break;
+            case "४":
+                eng+="4";
+                break;
+            case "५":
+                eng+="5";
+                break;
+            case "६":
+                eng+="6";
+                break;
+            case "७":
+                eng+="7";
+                break;
+            case "८":
+                eng+="8";
+                break;
+            case "९":
+                eng+="9";
+                break;
+            case "०":
+                eng+="0";
+                break;
+            default :
+                eng+=n;
+            }
+        }
+        return eng;
     }
 
     private String _convertToStr(long num) {
@@ -91,6 +137,8 @@ public class NumberToWord {
     public static void main(String[] arg) {
         NumberToWord n = new NumberToWord("0010023456");
         System.out.println(n.getInWords());
+        NumberToWord n1 = new NumberToWord("१२९०९३");
+        System.out.println(n1.getInWords());
     }
 }
 
